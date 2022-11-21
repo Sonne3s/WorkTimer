@@ -1,0 +1,9 @@
+﻿@using WorkTimer.ViewModels.Home.Intervals
+@model (int Index, WorkingIntervalViewModel Interval)
+@{
+    var hours = @Model.Interval.Duration.Hours;
+    var minutes = @Model.Interval.Duration.Minutes;
+    var seconds = @Model.Interval.Duration.Seconds;
+}
+
+<a class="intervals-list-item" href="#"><span>Интервал №@Model.Index: </span><span>@(hours):@(minutes):@(seconds)</span></a>

@@ -1,0 +1,52 @@
+﻿main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.intervals-section {
+    flex-direction: column;
+    width: 100%;
+}
+
+.intervals-list-empty {
+    margin-left: 5vw;
+    color: dimgray;
+}
+
+.intervals-list {
+    margin-left: 1.7rem;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.intervals-list-item, .intervals-list-item-day {
+    background-color: oldlace;
+    list-style-type: none;
+    font-size: 1vw;
+    margin: 1rem 1rem 0rem 1rem;
+    text-decoration: none;
+}
+
+.intervals-list-item {
+    margin: 1rem 1rem 0rem 3.5rem;
+}
+
+.intervals-list-item:nth-child(2n) {
+    background-color: aliceblue;
+}
+
+.intervals-list-item-day {
+    background-color: lavenderblush !important;
+}
+
+.intervals-list-item, .intervals-list-item:active {
+    color: black;
+}

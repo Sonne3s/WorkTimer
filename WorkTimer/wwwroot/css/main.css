@@ -1,0 +1,50 @@
+﻿body, nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+body {
+    flex-direction: column;
+}
+
+nav, main {
+    margin-left: 24%;
+    margin-right: 24%;
+}
+
+nav {
+    padding: 0 10vw 0 10vw;
+    flex-direction: row;
+    border: 1px solid lightblue;
+    border-left: none;
+    border-right: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+.sample {
+    display: none;
+}
+
+video.hide {
+    display: initial !important;
+    width: 0;
+}
+
+.nav-link {
+    display: inline-block;
+    margin: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: lightblue;
+}
+
+.nav-link:hover {
+    color: lightskyblue;
+}

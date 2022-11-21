@@ -1,0 +1,51 @@
+﻿@using WorkTimer.ViewModels.Home
+@model TimerViewModel
+
+<section class="timer-section">
+    <p class="time">
+        <span class="days">00</span>
+        <span class="hours">00</span>
+        <span class="minutes">00</span>
+        <span class="seconds">00</span>
+    </p>
+    <p class="idle-time hide">
+        <span class="label">Время простоя</span>
+        <span class="days">00</span>
+        <span class="hours">00</span>
+        <span class="minutes">00</span>
+        <span class="seconds">00</span>
+    </p>
+    <div class="controls">
+        <div>
+            <input type="checkbox"/>
+            <label>Указать задачу</label>
+            <input type="text"/>
+            <select>
+                <!option value=""></!option>
+                @if(Model?.Tasks != null)
+                {
+                    @foreach(var task in Model.Tasks)
+                    {
+                        <!option value=@task.Value @(task.Selected ? "selected" : string.Empty)>@task.Text</!option>
+                    }
+                }
+            </select>
+        </div>        
+        <button class="start icon-play"></button>
+        <button class="pause hide icon-pause"></button>
+        <button class="reset icon-arrow-clockwise"></button>
+        <button class="pip icon-box-arrow-up-right-1"></button>
+    </div>
+</section>
+
+@section Title {
+    <title>Таймер</title>  
+}
+
+@section Styles {
+    <link href="/css/timer.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="/js/pages/timer.js"></script>    
+}

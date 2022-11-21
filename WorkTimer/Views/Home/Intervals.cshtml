@@ -1,0 +1,32 @@
+﻿@using WorkTimer.ViewModels.Home
+@model IntervalsViewModel
+@{
+    var showEmptyMessage = (Model == null || Model.WorkingDays == null || Model.WorkingDays.Count == 0);
+    var existDays = !showEmptyMessage;
+    var showDaysList = existDays;
+}
+
+<section class="intervals-section">
+    <p class="intervals-list-empty @(!showEmptyMessage ? "hide" : string.Empty)">Список интервалов пуст</p>
+    <div class="intervals-list @(!showDaysList ? "hide" : string.Empty)">
+        @if (existDays)
+        {
+            @foreach (var day in Model.WorkingDays)
+            {
+                <partial name="_WorkingDaysListItem" model="(Model.WorkingDays.IndexOf(day), day)" />            
+            }
+        }
+    </div>
+</section>
+
+@section Title {
+    <title>Интервалы</title>
+}
+
+@section Styles {
+    <link href="/css/intervals.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="/js/pages/intervals.js"></script>
+}

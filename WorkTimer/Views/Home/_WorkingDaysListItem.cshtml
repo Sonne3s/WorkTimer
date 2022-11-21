@@ -1,0 +1,15 @@
+﻿@using WorkTimer.ViewModels.Home.Intervals
+@model (int Index, WorkingDayViewModel Day)
+@{
+    var existIntervals = !(Model.Day == null || Model.Day.Intervals == null || Model.Day.Intervals.Count == 0);
+}
+
+<a class="intervals-list-item-day" href="#"><span>День №@Model.Index: </span></a>
+@if (existIntervals)
+{
+    @foreach (var interval in Model.Day.Intervals)
+    {
+        <partial name="_IntervalsListItem" model="(Model.Day.Intervals.IndexOf(interval), interval)" />
+
+    }
+}         

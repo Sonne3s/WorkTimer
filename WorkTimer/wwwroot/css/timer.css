@@ -1,0 +1,103 @@
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-section, .time {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-section {
+    flex-direction: column;
+    margin-top: 5rem;
+    margin-block: 3rem;
+}
+
+.time {
+    height: 13vw;
+    width: 100%;
+    font-size: 10vw;
+    margin-bottom: 0;
+    flex-direction: row;
+    margin-top: 0;
+}
+
+.time span {
+    display: inline-block;
+    position: relative;
+    border-radius: 0.5rem;
+    margin-bottom:0;
+    height: 12vw;
+    padding:0.5rem;
+    box-shadow: 5px 5px 15px 2px grey;
+}
+
+.time span::before {
+    content: attr(data-title);
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+
+.time span:not(:last-child) {
+    margin-right: 2.5vw;
+}
+
+.time span:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+}
+
+.idle-time {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: dimgray;
+    font-size: 3vw;
+    flex-direction: row;
+    margin-bottom: 0;
+}
+
+.idle-time span:not(:last-child) {
+    margin-right: 1vw;
+}
+
+.idle-time span:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    margin-top: 4rem;
+}
+
+.controls button {
+    font-size: 4vw;
+    border: lightblue solid 3px;
+    color: lightblue;
+    border-radius: 2rem;
+    background-color: white;
+    margin-right: 0.5vw;
+    margin-left: 0.5vw;
+}
+
+.controls button.active {
+    color: white;
+    background-color: lightblue;
+}
+
+.controls button:hover {
+    color: white;
+    border-color: lightskyblue;
+    background-color: lightskyblue;
+}

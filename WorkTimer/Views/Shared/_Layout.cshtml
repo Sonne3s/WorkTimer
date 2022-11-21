@@ -1,0 +1,78 @@
+﻿@{
+    var currentAction = Context.Request.RouteValues["action"];
+    var currentController = Context.Request.RouteValues["controller"];
+    var currentLink = $"/{currentController}/Partial{currentAction}";
+    var sectionSelector = "main section";
+    var timerLink = Url.Action("Timer", "Home");
+    var partialTimerLink = Url.Action("PartialTimer", "Home");
+    var intervalsLink = Url.Action("Intervals", "Home");
+    var partiaIntervalsLink = Url.Action("PartialIntervals", "Home");
+    var tasksLink = Url.Action("Tasks", "Home");
+    var partiaTasksLink = Url.Action("PartialTasks", "Home");
+    var taskLink = Url.Action("Task", "Home");
+    var partialTaskLink = Url.Action("PartialTask", "Home");
+    var timerTitle = "Таймер";
+    var intervalsTitle = "Интервалы";
+    var tasksTitle = "Задачи";
+    var taskTitle = "Задача";
+    var titlesDictionary = new Dictionary<string, string>()
+     { 
+        { partialTimerLink, timerTitle}, 
+        { partiaIntervalsLink, intervalsTitle}, 
+        { partiaTasksLink, tasksTitle},
+        { partialTaskLink, taskTitle}
+    };
+    var scriptToPageDictionary = new Dictionary<string, string>()
+     {
+        { partialTimerLink, "/js/pages/timer.js"},
+        { partiaIntervalsLink, "/js/pages/intervals.js"},
+        { partiaTasksLink, "/js/pages/tasks.js"},
+        { partialTaskLink, "/js/pages/task.js"}
+    };
+    var stylesToPageDictionary = new Dictionary<string, string>()
+    {
+        { partialTimerLink, "/css/timer.css"},
+        { partiaIntervalsLink, "/css/intervals.css"},
+        { partiaTasksLink, "/css/tasks.css"},
+        { partialTaskLink, "/css/task.css"}
+    };
+
+    bool IsCurrentPage(string action, string controller)
+         => action == "Partial" + currentAction && controller == currentController.ToString();
+
+    string GetActive(string action, string controller)
+        => IsCurrentPage(action, controller) ? "active" : string.Empty;
+
+    string GetMap(IDictionary<string, string> dictionary)
+        => $"new Map([{ string.Join(", ", dictionary.Select(d => String.Format("['{0}', '{1}']", d.Key, d.Value))) }])";
+}
+
+<head>
+    @await RenderSectionAsync("Title", required: false)
+    <link href="/css/icons.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", required: false)
+    <script src="/js/core/ajax.js"></script>
+    <script src="/js/core/resourcesLoader.js"></script>
+    <script src="/js/core/pagesLoader.js"></script>
+</head>
+<body>
+    <nav>
+        <a href=@timerLink data-url=@partialTimerLink class="nav-link @GetActive("PartialTimer", "Home")">@timerTitle</a>
+        <a href=@intervalsLink data-url="@partiaIntervalsLink" class="nav-link @GetActive("PartialIntervals", "Home")">@intervalsTitle</a>
+        <a href=@tasksLink data-url=@partiaTasksLink class="nav-link @GetActive("PartialTasks", "Home")">@tasksTitle</a>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+    <video id="target" class="hide" controls muted autoplay></video>
+</body>
+
+<script src="/js/pages/main.js"></script>
+<script type="text/javascript">
+    initCurentPage("@currentLink", "@sectionSelector");
+    titles = @Html.Raw(GetMap(titlesDictionary));
+    scriptUrls = @Html.Raw(GetMap(scriptToPageDictionary));
+    styleUrls = @Html.Raw(GetMap(stylesToPageDictionary));
+</script>
+@await RenderSectionAsync("Scripts", required: false)

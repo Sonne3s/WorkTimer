@@ -1,0 +1,96 @@
+﻿main, section, .task-form, .form-body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.task-section {
+    width: 100%;
+}
+
+.task-form {
+    flex-direction: column;
+    width: 100%;
+}
+
+.hide {
+    display: none !important;
+}
+
+.form-header, .form-body {
+    width: 100%;
+    position: relative;
+}
+
+.header-block, .task-title {
+    display: inline-block;
+}
+
+label[for="save-task-changes"] {
+    vertical-align: super;
+}
+
+input.task-name {
+    background-color: aliceblue;
+    border: none;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: auto;
+}
+
+.form-body {
+    background: antiquewhite;
+}
+
+.form-element {
+    width: 100%;
+    margin: 0.5rem 1rem;
+}
+
+.task-description, .task-child-elements, .task-priority {
+    border: none;
+}
+
+.task-description, .task-child-elements {
+    width: 100%;
+}
+
+.task-description {
+    height: 10rem;
+}
+
+.task-child-elements {
+    height: 15rem;
+}
+
+.icon-reply, .icon-pencil-square, .save-task-changes, .apply-new-title {
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+.icon-reply, .icon-pencil-square, .save-task-changes {
+    color: dodgerblue;
+    font-size: 1.2vw;
+}
+
+.apply-new-title {
+    color: yellowgreen;
+    font-size: 2vw;
+    vertical-align: middle;
+    margin-bottom: 14px;
+}
+
+.icon-reply:hover, .icon-pencil-square:hover, .save-task-changes:hover {
+    color: deepskyblue;
+}
+
+.history-back:after, .icon-pencil-square:after, .apply-new-title:after {
+    content: " ";
+    display: block;
+    float: right;
+    background: lightgray;
+    margin: -0.4em 10px;
+    height: 2em;
+    width: 1px;
+}

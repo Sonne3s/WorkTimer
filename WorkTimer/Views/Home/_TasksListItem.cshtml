@@ -1,0 +1,8 @@
+﻿@using WorkTimer.ViewModels.Tasks.Home
+@model TasksListItemViewModel
+@{
+    var url = Url.Action("Task", "Home", new { Id = Model?.Id });
+    var partialUrl = Url.Action("PartialTask", "Home", new { Id = Model?.Id });
+}
+<a class="tasks-list-item" href=@url data-url=@partialUrl>@Model?.Name</a>
+@*<li class="tasks-list-item" data-id="@Model?.Id"><a href=@url data-url=@partialUrl>@Model?.Name</a></li>*@

@@ -1,0 +1,54 @@
+﻿@using WorkTimer.ViewModels.Home
+@using WorkTimer.ViewModels.Tasks.Home
+@model TasksViewModel
+@{
+    var showEmptyMessage = (Model == null || Model.Tasks == null || Model.Tasks.Count == 0);
+    var existTasks = !showEmptyMessage;
+    var showTasksList = existTasks;
+}
+
+<section class="tasks-section">
+    <h1 class="tasks-list-header">
+        <span>Список задач</span>
+        <button class="show-add-task-container icon-plus-lg"></button>
+    </h1>
+    <div class="add-task-container hide">
+        <button class="cancel-task icon-x"></button>
+        <button class="add-task icon-check-lg"></button>
+        <input placeholder="название задачи" class="add-task-input" type="text" />
+        <div class="sample">
+            <partial name="_TasksListItem" model="(TasksListItemViewModel)null" />
+        </div>
+    </div>
+    <p class="tasks-list-empty @(!showEmptyMessage ? "hide" : string.Empty)">Список задач пуст</p>
+    <div class="tasks-list @(!showTasksList ? "hide" : string.Empty)">
+        @if (existTasks)
+        {
+            @foreach (var task in Model.Tasks)
+            {
+                <partial name="_TasksListItem" model="task" />
+            }
+        }
+    </div>
+@*    <ul class="tasks-list @(!showTasksList ? "hide" : string.Empty)">
+        @if (existTasks)
+        {
+            @foreach (var task in Model.Tasks)
+            {
+                <partial name="_TasksListItem" model="task" />
+            }
+        }
+    </ul>*@
+</section>
+
+@section Title {
+    <title>Задачи</title>
+}
+
+@section Styles {
+    <link href="/css/tasks.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="/js/pages/tasks.js"></script>
+}

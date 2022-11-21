@@ -1,0 +1,45 @@
+﻿@page
+@using WorkTimer.Pages
+@model IndexModel
+
+<head>
+    <title>Таймер</title>
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/icons.css" rel="stylesheet" />
+    <script src="js/components/timer/core/draw.js"></script>
+    <script src="js/components/timer/core/logic.js"></script>
+    <script src="js/components/timer/core.js"></script>
+    <script src="js/components/timer/domUI.js"></script>
+    <script src="js/components/timer/videoUI.js"></script>
+    <script src="js/components/timer.js"></script>
+    <script src="js/pages/site.js"></script>
+</head>
+<body>
+    <nav>
+        <a href=@Url.ActionLink("Index") class="nav-link active">Таймер</a>
+        <a href=@Url.ActionLink("Tasks", "Home") class="nav-link">Интервалы</a>
+        <a href=@Url.ActionLink("Tasks", "Home") class="nav-link">Задачи</a>
+    </nav>
+    <section class="timer-section">
+        <p class="time">
+            <span class="days">00</span>
+            <span class="hours">00</span>
+            <span class="minutes">00</span>
+            <span class="seconds">00</span>
+        </p>
+        <p class="idle-time hide">
+            <span class="label">Время простоя</span>
+            <span class="days">00</span>
+            <span class="hours">00</span>
+            <span class="minutes">00</span>
+            <span class="seconds">00</span>
+        </p>
+        <div class="controls">
+            <button class="start icon-play"></button>
+            <button class="pause hide icon-pause"></button>
+            <button class="reset icon-arrow-clockwise"></button>
+            <button class="pip icon-box-arrow-up-right-1"></button>
+        </div>
+        <video id="target" class="hide" controls muted autoplay></video>
+    </section>
+</body>

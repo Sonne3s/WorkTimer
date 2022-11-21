@@ -1,0 +1,124 @@
+﻿main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tasks-list-header {
+    width: 100%;
+    position: relative;
+}
+
+.tasks-list-header span {
+    display: inline-block;
+}
+
+.tasks-list-header span:after {
+    content: " ";
+    display: block;
+    float: right;
+    background: lightgray;
+    margin: -0.4em 10px;
+    height: 2em;
+    width: 1px;
+}
+
+.show-add-task-container {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: dodgerblue;
+    font-size: 1.2vw;
+}
+
+.show-add-task-container:hover {
+    color: deepskyblue;
+}
+
+.add-task-container {
+    display: flex;
+    flex-direction: row;
+    height: 1.6rem;
+    width: 98.2%;
+}
+
+.add-task {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: yellowgreen;
+    font-size: 1.2vw;
+    display: flex;
+}
+
+.cancel-task {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: red;
+    font-size: 1.45vw;
+    display: flex;
+}
+
+.cancel-task::after {
+    content: " ";
+    display: block;
+    float: right;
+    background: lightgray;
+    height: 1em;
+    width: 1px;
+    margin-left: 5px;
+}
+
+.add-task-input {
+    border: none;
+    outline: none;
+    background-color: lavenderblush;
+    width: 94%;
+    font-size: 1.2rem;
+    padding: 0.1rem;
+    font-family: auto;
+}
+
+.tasks-list-empty {
+    margin-left: 5vw;
+    color: dimgray;
+}
+
+.tasks-list {
+    margin-left: 1.7rem;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.tasks-section {
+    flex-direction: column;
+    width: 100%;
+}
+
+.tasks-list-item, .tasks-list-item a:active {
+    color: black;
+}
+
+.tasks-list-item {
+    background-color: oldlace;
+    list-style-type: none;
+    font-size: 1vw;
+    margin: 1rem 1rem 0rem 3.5rem;
+    text-decoration: none;
+}
+
+.tasks-list-item:hover {
+    box-shadow: 2px 2px 5px 0.01px cadetblue;
+}
+
+.tasks-list-item:nth-child(2n) {
+    background-color: aliceblue;
+}

@@ -1,0 +1,58 @@
+﻿@using WorkTimer.ViewModels.Home
+@model TaskViewModel
+
+<section class="task-section">
+    <form class="task-form">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="form-header">
+            <button class="history-back icon-reply" type="button"></button>
+            <div class="header-block">
+                <h1 class="task-title">
+                    <span>Задача @Model.Number:</span>
+                    <span class="task-name">@Model.Name</span>
+                </h1>
+                <input name="name" type="text" value="@Model.Name" class="task-name hide" />
+                <button class="apply-new-title icon-check-lg hide" type="button"></button>
+                <button class="edit-name icon-pencil-square" type="button"></button>
+            </div>
+            <div class="header-block">
+                <label for="save-task-changes">Сохранить</label>
+                <button id="save-task-changes" class="save-task-changes icon-floppy-disk-solid" type="button"></button>
+            </div>
+        </div>
+        <div class="form-body">
+            <div class="form-element">
+                <label for="priority">Приоритет:</label>
+                <select asp-items=@Model.Priority name="priority" id="priority" class="task-priority"></select>
+            </div>
+            <div class="form-element">
+                <label for="description">Описание:</label>
+                <textarea name="description" id="description" class="task-description">@Model.Description</textarea>
+            </div>
+            <div class="form-element">
+                <label for="childElements">Связанные элементы:</label>
+                <select name="childElements" id="childElements" class="task-child-elements" multiple>
+                    @if (Model != null && Model.ChildElements != null && Model.ChildElements.Count != 0)
+                    {
+                        @foreach (var item in Model.ChildElements)
+                        {
+                            <!option value="@item.Value" class="task-child-element">@item.Text</!option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Title {
+    <title>Задача</title>
+}
+
+@section Styles {
+    <link href="/css/task.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="/js/pages/task.js"></script>
+}
